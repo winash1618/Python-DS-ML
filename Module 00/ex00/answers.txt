@@ -1,0 +1,6 @@
+pip list
+pip show numpy
+pip uninstall numpy
+pip install numpy | pip install numpy==1.21.5
+pip freeze > requirements.txt
+conda activate "conda environment name"
