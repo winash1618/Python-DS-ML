@@ -4,6 +4,7 @@ language: python3
 important note: when you import the function to the terminal python3 environment and
 if you change anything inside the code you need to import it again. otherwise you won't
 have those changes.
+links: https://realpython.com/if-name-main-python/
 """
 import string
 if __name__ == "__main__":
