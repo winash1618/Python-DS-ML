@@ -10,6 +10,6 @@ $> python3 kata03.py | wc -c
 42
 $>
 """
-kata = "The right format"
-kata_new = kata.rjust(42, "-")
-print(kata_new)
+KATA = "The right format"
+KATA_NEW = KATA.rjust(42, "-")
+print(KATA_NEW)
