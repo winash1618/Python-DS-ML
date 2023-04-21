@@ -13,19 +13,12 @@ import string
 if __name__ == "__main__":
     import sys
 
-def list_words(S: str, N: int) -> None:
+def list_words(my_string: str, number_of_non_punctuation: int) -> None:
     """
     print the list of words in S that contains more than N non-punctuation characters
     """
-    words = S.split()
-    for word in words:
-        count = 0
-        for character in word:
-            if character not in string.punctuation:
-                count += 1
-        if count <= N:
-            words.remove(word)
-    print(words)
+    print([word for word in my_string.split() if len(
+        [char for char in word if char not in string.punctuation ]) > number_of_non_punctuation])
 
 def main() -> None:
     """
