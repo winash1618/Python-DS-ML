@@ -39,7 +39,7 @@ def main() -> None:
                     "everything is 42.")
             else:
                 print("Congratulations, you've got it!")
-            if  my_secret_random_number == 42 && counter == 1:
+            if  my_secret_random_number == 42 and counter == 1:
                 print("Congratulations! You got it on your first try!")
                 exit(1)
             else:
