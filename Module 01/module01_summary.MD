@@ -2,6 +2,7 @@
 
 ## Libraries used in this module:
 - datetime
+- typing
 
 ## Concepts covered in this module:
 - how to import a module in python from terminal
@@ -12,6 +13,15 @@
 - __init__
 - __str__
 - __dict__
+- __repr__
+- __add__
+- __sub__
+- __mul__
+- __truediv__
+- __radd__
+- __rsub__
+- __rmul__
+- __rtruediv__
 - datetime.now()
 - ValueError
 - KeyError
@@ -21,3 +31,7 @@
 - dictionary_name.values()
 - dictionary_name.items()
 - any
+- range
+- zip
+- append
+- NotImplementedError
