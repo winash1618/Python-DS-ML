@@ -22,7 +22,11 @@ def generator(text, sep=" ", option=None):
     lst = text.split(sep)
     if option == "shuffle":
         print("shuffle")
-        random.shuffle(lst)
+        for i, element in enumerate(lst):
+            j = random.randint(0, i)
+            temp = element
+            lst[i] = lst[j]
+            lst[j] = temp
         return lst
     elif option == "unique":
         print("unique")
