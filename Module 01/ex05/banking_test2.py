@@ -13,7 +13,6 @@ if __name__ == "__main__":
 
         bank.fix_account('William John')
         bank.fix_account('Smith Jane')
-
     if bank.transfer('William John', 'Smith Jane', 1000.0) is False:
         print('Failed')
     else:

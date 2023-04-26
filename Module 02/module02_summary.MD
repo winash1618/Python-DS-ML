@@ -4,6 +4,7 @@
 - time
 - random
 - os
+- math
 
 ## Concepts covered in this module:
 - Work on the built-in functions map, filter and reduce.
@@ -24,4 +25,5 @@
 - time.sleep()
 - randint
 - __init__.py
+- sqrt
 

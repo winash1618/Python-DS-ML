@@ -66,6 +66,8 @@ class Bank(object):
             @return True if success, False if an error occured
         """
         try:
+            origin_account = None
+            dest_account = None
             for account in self.accounts:
                 if account.name == origin:
                     attributes = dir(account)
@@ -102,6 +104,7 @@ class Bank(object):
                         raise AttributeError("The attribute count of the object is not even")
                     for attribute in attributes:
                         if attribute[0] == 'b':
+                            print(attribute)
                             raise AttributeError("The attribute starting with b")
                         if attribute[0:3] == "zip" or attribute[0:4] == "addr":
                             raise AttributeError("The attribute start with zip or addr")
@@ -120,9 +123,10 @@ class Bank(object):
                     if not isinstance(account.value, (int, float)):
                         raise TypeError("Account value is not of the type int or float")
                     dest_account = account
-            origin_account.value -= amount
-            dest_account.value += amount
-            return True
+            if dest_account is not None and origin_account is not None:
+                dest_account.value += amount
+                origin_account.value -= amount
+                return True
         except AttributeError as err:
             print(err)
         except TypeError as err:
