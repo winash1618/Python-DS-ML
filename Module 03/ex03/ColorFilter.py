@@ -27,6 +27,7 @@ class ColorFilter:
         ◦ Authorized functions: .sum,.shape,.reshape,.broadcast_to,.as_type.
         ◦ Authorized operators: *,/, =.
     """
+
     def invert(self, array):
         """
         Inverts the color of the image received as a numpy array.
@@ -48,28 +49,30 @@ class ColorFilter:
             [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
             [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
         ])
-        
+
         # select the first row
         print(arr[0, :, :])  # outputs: [[1 2 3], [4 5 6], [7 8 9]]
-        
+
         # select the second column
         print(arr[:, 1, :])  # outputs: [[4 5 6], [13 14 15], [22 23 24]]
-        
+
         # select the first two color channels (R, G)
         img = np.array([
             [[255, 128, 0, 255], [0, 255, 128, 255], [128, 0, 255, 255]],
             [[255, 255, 0, 128], [255, 0, 255, 128], [0, 255, 255, 128]],
             [[128, 128, 128, 0], [64, 64, 64, 0], [0, 0, 0, 0]]
         ], dtype=np.uint8)
-        
+
         print(img[:, :, :2])
         # outputs: [[[255 128], [0 255], [128 0]], [[255 255], [255 0], [0 255]], [[128 128], [64 64], [0 0]]]
         """
+        if array.shape == (0, 0, 0):
+            return None
         result = np.copy(array)
         new_array = 255 - result[:, :, :3]
         result[:, :, :3] = new_array
         return result
-    
+
     def to_blue(self, array):
         """
         Applies a blue filter to the image received as a numpy array.
@@ -84,10 +87,12 @@ class ColorFilter:
         -------
         This function should not raise any Exception.
         """
+        if array.shape == (0, 0, 0):
+            return None
         result = np.zeros(np.shape(array), dtype=np.uint8)
         result[:, :, 2] = array[:, :, 2]
         result[:, :, 3] = array[:, :, 3]
-        return (result)
+        return result
 
     def to_green(self, array):
         """
@@ -103,10 +108,13 @@ class ColorFilter:
         -------
         This function should not raise any Exception.
         """
+        if array.shape == (0, 0, 0):
+            return None
         result = np.copy(array)
         result[:, :, 0] -= array[:, :, 0]
         result[:, :, 2] -= array[:, :, 2]
-        return (result)
+        return result
+
     def to_red(self, array):
         """
         Applies a red filter to the image received as a numpy array.
@@ -121,9 +129,13 @@ class ColorFilter:
         -------
         This function should not raise any Exception.
         """
+        if array.shape == (0, 0, 0):
+            return None
         result = np.copy(array)
-        result[:, :, :3] -= self.to_green(array)[:, :, :3] + self.to_blue(array)[:, :, :3]
-        return (result)
+        result[:, :, :3] -= self.to_green(array)[:,
+                                                 :, :3] + self.to_blue(array)[:, :, :3]
+        return result
+
     def to_celluloid(self, array):
         """
         Applies a celluloid filter to the image received as a numpy array.
@@ -142,9 +154,17 @@ class ColorFilter:
         Raises:
         -------
         This function should not raise any Exception.
+        https://chat.openai.com/c/d8465cf3-2b7b-403b-9d3a-3ff9b9002f3e
         """
-        
-    
+        if array.shape == (0, 0, 0):
+            return None
+        filter_array = np.linspace(55, 255, 4)
+        new_array = np.copy(array)
+        for i in range(3):
+            for elem in filter_array:
+                new_array[..., i][array[..., i] > elem] = elem
+        return new_array
+
     def to_grayscale(self, array, filter, **kwargs):
         """
         Applies a grayscale filter to the image received as a numpy array.
@@ -164,4 +184,17 @@ class ColorFilter:
         -------
         This function should not raise any Exception.
         """
-    
+        if array.shape == (0, 0, 0):
+            return None
+        if filter == "m" or filter == "mean":
+            new_arr = ( (array[..., 0] + array[..., 1] + array[..., 2]) / 3 ).astype(int)
+            for i in range(3):
+                array[..., i] = new_arr[...]
+            return array
+        elif filter == "w" or filter == "weight":
+            weights = kwargs['weights']
+            new_arr = (array[..., 0] * weights[0] + array[..., 1]
+                       * weights[1] + array[..., 2] * weights[2]).astype(int)
+            for i in range(3):
+                array[..., i] = new_arr[...]
+            return array
