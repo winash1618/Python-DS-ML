@@ -1,4 +1,4 @@
-# Module 00: Module Summary
+# Module 02: Module Summary
 
 ## Libraries used in this module:
 - time
