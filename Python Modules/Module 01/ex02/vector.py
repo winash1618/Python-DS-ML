@@ -4,21 +4,22 @@ those allowing to perform operations. Student is expected to code built-in metho
 vector-vector and vector-scalar operations as rigorously as possible.
 """
 
+
 class Vector:
     """
     create a Vector class. The goal is to create vectors and be
     able to perform mathematical operations with them.
-    	• Column vectors are represented as list of lists of single float ([[1.], [2.], [3.]]),
-    	• Row vectors are represented as a list of a list of several floats ([[1., 2., 3.]]).
+        • Column vectors are represented as list of lists of single float ([[1.], [2.], [3.]]),
+        • Row vectors are represented as a list of a list of several floats ([[1., 2., 3.]]).
     The class should also has 2 attributes:
-    	• values: list of list of floats (for row vector) or list of lists of single float (for column
-    	vector),
-    	• shape: tuple of 2 integers: (1,n) for a row vector of dimension n or (n,1) for a
-    	column vector of dimension n.
+        • values: list of list of floats (for row vector) or list of lists of single float (for column
+        vector),
+        • shape: tuple of 2 integers: (1,n) for a row vector of dimension n or (n,1) for a
+        column vector of dimension n.
     Finally you have to implement 2 methods:
-    	• .dot() produce a dot product between two vectors of same shape,
-    	• .T() returns the transpose vector (i.e. a column vector into a row vector, or a row
-    	vector into a column vector).
+        • .dot() produce a dot product between two vectors of same shape,
+        • .T() returns the transpose vector (i.e. a column vector into a row vector, or a row
+        vector into a column vector).
     """
 
     def __init__(self, value1=None, value2=None):
@@ -32,7 +33,8 @@ class Vector:
                 self.values = []
                 self.shape = (0, 0)
             else:
-                self.values = [[float(value)] for value in range(value1, value2)]
+                self.values = [[float(value)]
+                               for value in range(value1, value2)]
                 self.shape = (value2 - value1, 1)
         elif value1 is not None:
             if isinstance(value1, (int)):
@@ -53,12 +55,12 @@ class Vector:
         if isinstance(other, Vector):
             if self.shape[0] == other.shape[0] and self.shape[1] == other.shape[1]:
                 if self.shape[0] == 1:
-                    new_vector=[]
+                    new_vector = []
                     for value1, value2 in zip(self.values[0], other.values[0]):
                         new_vector.append([value1 + value2])
                     return new_vector
                 else:
-                    new_vector=[]
+                    new_vector = []
                     for value1, value2 in zip(self.values. other.values):
                         new_vector.append([value1[0] + value2[0]])
                     return new_vector
@@ -72,7 +74,7 @@ class Vector:
                     new_vector.append([value + other])
                 return new_vector
             else:
-                new_vector=[]
+                new_vector = []
                 for value in self.values:
                     new_vector.append([value[0] + other])
                 return new_vector
@@ -82,12 +84,12 @@ class Vector:
         if isinstance(other, Vector):
             if self.shape[0] == other.shape[0] and self.shape[1] == other.shape[1]:
                 if self.shape[0] == 1:
-                    new_vector=[]
+                    new_vector = []
                     for value1, value2 in zip(self.values[0], other.values[0]):
                         new_vector.append([value1 - value2])
                     return new_vector
                 else:
-                    new_vector=[]
+                    new_vector = []
                     for value1, value2 in zip(self.values. other.values):
                         new_vector.append([value1[0] - value2[0]])
                     return new_vector
@@ -101,7 +103,7 @@ class Vector:
                     new_vector.append([other - value])
                 return new_vector
             else:
-                new_vector=[]
+                new_vector = []
                 for value in self.values:
                     new_vector.append([other - value[0]])
                 return new_vector
@@ -117,7 +119,7 @@ class Vector:
                         new_vector.append(value / other)
                     return [new_vector]
                 else:
-                    new_vector=[]
+                    new_vector = []
                     for value in self.values:
                         new_vector.append([value[0] / other])
                     return new_vector
@@ -137,7 +139,7 @@ class Vector:
                     new_vector.append(value * other)
                 return [new_vector]
             else:
-                new_vector=[]
+                new_vector = []
                 for value in self.values:
                     new_vector.append([value[0] * other])
                 return new_vector
@@ -151,7 +153,7 @@ class Vector:
                     new_vector.append([value * other])
                 return new_vector
             else:
-                new_vector=[]
+                new_vector = []
                 for value in self.values:
                     new_vector.append([value[0] * other])
                 return new_vector
@@ -216,7 +218,7 @@ class Vector:
                         total += float(value1 * value2)
                     return total
                 else:
-                    
+
                     for value1, value2 in zip(self.values[0], other.values):
                         total += float(value1 * value2[0])
                     return total
@@ -230,4 +232,5 @@ class Vector:
                         total += float(value1[0] * value2[0])
                     return total
         else:
-            raise NotImplementedError("dot product not implemented for this check your input")
+            raise NotImplementedError(
+                "dot product not implemented for this check your input")
