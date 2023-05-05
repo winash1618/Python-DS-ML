@@ -50,7 +50,6 @@ class Matrix(object):
             return Matrix(result)
         else:
             raise NotImplementedError("Type unknown")
-
     def __sub__(self, other):
         if isinstance(other, Matrix) and other.shape == self.shape:
             result = []
