@@ -26,5 +26,8 @@ def vec_log_loss_(y, y_hat, eps=1e-15):
     k, l = y_hat.shape
     if m != k or n != l or n != 1 or l != 1:
         return None
-    print((np.ones(y.shape) - y),  np.log(np.ones(y.shape) - y))
-    return (-1/m) * (np.dot(y, np.log(y_hat)) + np.dot((np.ones(y.shape) - (y + np.full(y.shape, eps))), np.log(np.ones(y.shape) - (y_hat + np.full(y.shape, eps)))))
+    epsm = np.full(y.shape, eps)
+    ones = np.ones(y.shape)
+    y_safe = y + epsm
+    y_hatsafe = y_hat + epsm
+    return (-1/m) * (np.dot(y.transpose(), np.log(y_hatsafe)) + np.dot((ones - y_safe).transpose(), np.log(ones - y_hatsafe))).squeeze()
