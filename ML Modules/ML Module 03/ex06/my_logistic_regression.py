@@ -80,8 +80,8 @@ class MyLogisticRegression():
         """
         i = 0
         while i < self.max_iter:
+            y_hat = self.predict_(x)
             X = np.insert(x, 0, np.array([1]), axis=1)
-            y_hat = 1 / (1 + np.exp(-np.ones(y.shape) * np.dot(X, self.theta)))
-            grad = (1 / x.shape[0]) * np.dot(X.transpose(), y_hat - y).squeeze()
+            grad = (1 / x.shape[0]) * np.dot(X.transpose(), y_hat - y)
             self.theta = self.theta - self.alpha * grad
             i += 1
