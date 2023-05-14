@@ -30,3 +30,9 @@ y_hat3 = logistic_predict_(x3, theta3)
 print(vec_log_loss_(y3, y_hat3))
 # Output:
 # 2.993853310859968
+
+X = np.array([[1., 1., 2., 3.], [5., 8., 13., 21.], [3., 5., 9., 14.]])
+Y = np.array([[1], [0], [1]])
+thetas = np.array([[2], [0.5], [7.1], [-4.3], [2.09]])
+y_hat = logistic_predict_(X, thetas)
+print(vec_log_loss_(Y, y_hat))
