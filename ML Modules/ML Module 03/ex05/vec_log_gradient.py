@@ -26,5 +26,5 @@ def vec_log_gradient(x, y, theta):
     if m != l or k != 1 or p != 1 or o != n + 1:
         return None
     X = np.insert(x, 0, np.array([1]), axis=1)
-    y_hat = 1 / (1 - np.exp(-1 * np.dot(X, theta)))
+    y_hat = 1 / (1 + np.exp(-np.ones(y.shape) * np.dot(X, theta)))
     return (1 / m) * np.dot(X.transpose(), y_hat - y).squeeze()
