@@ -1,3 +1,13 @@
+    """_summary_
+
+    Raises:
+        any: _description_
+
+    Returns:
+        _type_: _description_
+    """
+import numpy as np
+
 def confusion_matrix_(y_true, y_hat, labels=None):
     """
     Compute confusion matrix to evaluate the accuracy of a classification.
@@ -14,3 +24,12 @@ def confusion_matrix_(y_true, y_hat, labels=None):
     Raises:
     This function should not raise any Exception.
     """
+    if labels is None:
+        labels=['bird', 'dog', 'norminet']
+    arr = np.zeros((len(labels),len(labels)))
+    print(arr)
+    for (i, j), _ in np.ndenumerate(arr):
+        pair = (labels[i], labels[j])
+        count = sum([pair == elem for elem in zip(y_true.flat, y_hat.flat)])
+        arr[i,j] = count
+    return arr

@@ -5,7 +5,7 @@ y_hat = np.array([['norminet'], ['dog'], ['norminet'], ['norminet'], ['dog'], ['
 y = np.array([['dog'], ['dog'], ['norminet'], ['norminet'], ['dog'], ['norminet']])
 # Example 1:
 ## your implementation
-confusion_matrix_(y, y_hat)
+print(confusion_matrix_(y, y_hat))
 ## Output:
 # array([[0 0 0]
 # [0 2 1]
@@ -18,7 +18,7 @@ confusion_matrix(y, y_hat)
 # [1 0 2]])
 # Example 2:
 ## your implementation
-confusion_matrix_(y, y_hat, labels=['dog', 'norminet'])
+print(confusion_matrix_(y, y_hat, labels=['dog', 'norminet']))
 ## Output:
 # array([[2 1]
 # [0 2]])
