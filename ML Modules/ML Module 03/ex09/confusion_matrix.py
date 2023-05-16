@@ -1,11 +1,4 @@
-    """_summary_
 
-    Raises:
-        any: _description_
-
-    Returns:
-        _type_: _description_
-    """
 import numpy as np
 
 def confusion_matrix_(y_true, y_hat, labels=None):
