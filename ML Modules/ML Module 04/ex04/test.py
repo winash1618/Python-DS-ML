@@ -23,7 +23,7 @@ print(reg_linear_grad(y, x, theta, 1.0))
 # [ 863.46571429],
 # [-644.52142857]])
 # Example 1.2:
-# print(vec_reg_linear_grad(y, x, theta, 1))
+print(vec_reg_linear_grad(y, x, theta, 1.0))
 # Output:
 # array([[ -60.99 ],
 # [-195.64714286],

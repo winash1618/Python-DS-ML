@@ -1,22 +1,16 @@
-"""
-regularized linear regression gradient
-"""
 
 import numpy as np
 
-def reg_linear_grad(y, x, theta, lambda_):
-    """Computes the regularized linear gradient of three non-empty numpy.ndarray,
-    with two for-loop. The three arrays must have compatible shapes.
-    Args:
+def reg_logistic_grad(y, x, theta, lambda_):
+    """Computes the regularized logistic gradient of three non-empty numpy.ndarray, with two for-loops. The three arrayArgs:
     y: has to be a numpy.ndarray, a vector of shape m * 1.
     x: has to be a numpy.ndarray, a matrix of dimesion m * n.
-    theta: has to be a numpy.ndarray, a vector of shape (n + 1) * 1.
+    theta: has to be a numpy.ndarray, a vector of shape n * 1.
     lambda_: has to be a float.
-    Return:
-    A numpy.ndarray, a vector of shape (n + 1) * 1, containing the results of the formula for all j.
+    Returns:
+    A numpy.ndarray, a vector of shape n * 1, containing the results of the formula for all j.
     None if y, x, or theta are empty numpy.ndarray.
     None if y, x or theta does not share compatibles shapes.
-    None if y, x or theta or lambda_ is not of the expected type.
     Raises:
     This function should not raise any Exception.
     """
@@ -41,30 +35,27 @@ def reg_linear_grad(y, x, theta, lambda_):
         tot = 0
         if j is 0:
             while i < m:
-                tot += np.dot(X[i,:].reshape(-1, 1).transpose(), theta) - y[i]
+                tot += (1 / (1 + np.exp(-np.dot(X[i,:].reshape(-1, 1).transpose(), theta)))) - y[i]
                 i += 1
             tot = (1/m) * tot
         else:
             while i < m:
-                tot += ((np.dot(X[i,:].reshape(-1, 1).transpose(), theta) - y[i]) * X[i][j])
+                tot += (((1 / (1 + np.exp(-np.dot(X[i,:].reshape(-1, 1).transpose(), theta)))) - y[i]) * X[i][j])
                 i += 1
             tot = (1/m) * (tot + lambda_ * theta_[j])
         grad[j] = np.array(tot.item())
         j += 1
     return (grad)
-def vec_reg_linear_grad(y, x, theta, lambda_):
-    """Computes the regularized linear gradient of three non-empty numpy.ndarray,
-    without any for-loop. The three arrays must have compatible shapes.
-    Args:
+def vec_reg_logistic_grad(y, x, theta, lambda_):
+    """Computes the regularized logistic gradient of three non-empty numpy.ndarray, without any for-loop. The three arrArgs:
     y: has to be a numpy.ndarray, a vector of shape m * 1.
-    x: has to be a numpy.ndarray, a matrix of dimesion m * n.
-    theta: has to be a numpy.ndarray, a vector of shape (n + 1) * 1.
+    x: has to be a numpy.ndarray, a matrix of shape m * n.
+    theta: has to be a numpy.ndarray, a vector of shape n * 1.
     lambda_: has to be a float.
-    Return:
-    A numpy.ndarray, a vector of shape (n + 1) * 1, containing the results of the formula for all j.
+    Returns:
+    A numpy.ndarray, a vector of shape n * 1, containing the results of the formula for all j.
     None if y, x, or theta are empty numpy.ndarray.
     None if y, x or theta does not share compatibles shapes.
-    None if y, x or theta or lambda_ is not of the expected type.
     Raises:
     This function should not raise any Exception.
     """
@@ -81,4 +72,5 @@ def vec_reg_linear_grad(y, x, theta, lambda_):
     X = np.insert(x, 0, np.array([1]), axis=1)
     theta_ = np.array(theta)
     theta_[0] = 0
-    return (1 / m) * (np.dot(X.transpose(), (np.dot(X, theta) - y)) + (lambda_ * theta_))
+    return (1 / m) * (np.dot(X.transpose(), (1 / (1 + np.exp(-np.dot(X, theta))) - y)) + (lambda_ * theta_))
+    
