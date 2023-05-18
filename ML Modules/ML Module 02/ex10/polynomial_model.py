@@ -19,7 +19,9 @@ def add_polynomial_features(x, power):
     """
     i = 2
     y = x
+    print(power)
     while i <= power:
         y = np.hstack((y, np.power(x, i)))
         i += 1
+        print(y)
     return y

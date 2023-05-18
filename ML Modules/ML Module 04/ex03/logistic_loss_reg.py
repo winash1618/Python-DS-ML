@@ -22,7 +22,8 @@ def value_corrector(x, eps=1e-15):
     return x
 
 def reg_log_loss_(y, y_hat, theta, lambda_):
-    """Computes the regularized loss of a logistic regression model from two non-empty numpy.ndarray, without any for lArgs:
+    """Computes the regularized loss of a logistic regression model from two non-empty numpy.ndarray,
+    without any for lArgs:
     y: has to be an numpy.ndarray, a vector of shape m * 1.
     y_hat: has to be an numpy.ndarray, a vector of shape m * 1.
     theta: has to be a numpy.ndarray, a vector of shape n * 1.
