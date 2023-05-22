@@ -25,7 +25,7 @@ def data_spliter(x, y, proportion):
         return None
     if x.size == 0 or y.size == 0:
         return None
-    m, _ = x.shape
+    m, n = x.shape
     k, l = y.shape
     if m != k or l != 1:
         return None

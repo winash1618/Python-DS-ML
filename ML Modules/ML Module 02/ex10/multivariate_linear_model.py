@@ -10,7 +10,7 @@ class MyLinearRegression():
     My personnal linear regression class to fit like a boss.
     """
 
-    def __init__(self, thetas, alpha=0.00000001, max_iter=600000):
+    def __init__(self, thetas, alpha=0.00000001, max_iter=6000):
         self.alpha = alpha
         self.max_iter = max_iter
         self.thetas = thetas
@@ -32,10 +32,9 @@ class MyLinearRegression():
             return None
         i = 0
         X = np.insert(x, 0, np.array([1]), axis=1)
-        # print(X.shape, self.thetas.shape, y.shape)
+        print(X.shape, self.thetas.shape, y.shape)
         while i < self.max_iter:
             grad = (1 / len(y)) * np.dot((X.transpose()) , np.dot(X, self.thetas) - y)
-            print(i)
             self.thetas = self.thetas - self.alpha * grad
             i += 1
         return self.thetas
