@@ -17,11 +17,10 @@ def main() -> None:
     print("Type 'exit' to end the game.")
     print("Good luck!\n")
     my_secret_random_number = random.randint(1, 99)
-    print(my_secret_random_number)
     counter = 0
     while True:
         try:
-            guess = input("What's your guess between 1 and 99?")
+            guess = input("What's your guess between 1 and 99?\n>> ")
             if guess == "exit":
                 print("Goodbye!")
                 exit(0)

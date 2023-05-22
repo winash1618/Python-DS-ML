@@ -18,18 +18,18 @@ def ft_progress(lst) -> None:
         yield elem
         end_time = time.time()
         print(f"ETA: {round((end_time - start_time) / (count / len(lst)), 2)}s",
-              f" [{'>'.rjust(math.ceil(20 * (count / len(lst))), '='):21}] ",
+              f" [{'>'.rjust(math.ceil(20 * (count / len(lst))), '='):20}] ",
               f"{count}/{len(lst)} | elapsed time {round(end_time - start_time, 2)}s", end="\r")
     print()
 
 
-# listy = range(1000)
-# ret = 0
-# for elem in ft_progress(listy):
-#     ret += (elem + 3) % 5
-#     time.sleep(0.01)
-# print()
-# print(ret)
+listy = range(1000)
+ret = 0
+for elem in ft_progress(listy):
+    ret += (elem + 3) % 5
+    time.sleep(0.01)
+print()
+print(ret)
 
 listy = range(3333)
 ret = 0

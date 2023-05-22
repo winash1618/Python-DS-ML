@@ -41,6 +41,7 @@ def print_recipe() -> None:
     print(f"    Ingredients list: {cookbook[recipe_name]['ingredients']}")
     print(f"    To be eaten for {cookbook[recipe_name]['meal']}.")
     print(f"    Takes {cookbook[recipe_name]['prep_time']} minutes of cooking.")
+    print("\n")
 
 
 def delete_recipe() -> None:
@@ -80,7 +81,7 @@ if __name__ == "__main__":
         for value in ["    1: Add a recipe", "    2: Delete a recipe",
                       "    3: Print a recipe", "    4: Print the cookbook", "    5: Quit"]:
             print(f"{value.ljust(25, ' ')}")
-        choice = input("Please select an option:\n>> ")
+        choice = input("Please select an option:\n\n>> ")
         if choice == '1':
             add_recipe()
         elif choice == '2':

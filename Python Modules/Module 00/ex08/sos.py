@@ -38,6 +38,7 @@ def string_to_morse_code_converter(my_string: str):
         exit(0)
     for code in morse_code:
         print(code, end=' ')
+    print('')
 
 def main() -> None:
     """

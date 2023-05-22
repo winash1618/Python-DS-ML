@@ -6,11 +6,10 @@ import sys
 list = sys.argv[1:]
 
 if len(list) != 0:
-    # print("list without the executable : ", list)
-    i = 0
-    while i < len(list):
-        list[i] = list[i][::-1]
-        i += 1
-    joined_string = ' '.join(list)
+    i = len(list) - 1
+    new_list = []
+    while i >= 0:
+        new_list.append(list[i][::-1].swapcase())
+        i -= 1
+    joined_string = ' '.join(new_list)
     print(joined_string)
-    # print("Reversed and joined string ", joined_string)

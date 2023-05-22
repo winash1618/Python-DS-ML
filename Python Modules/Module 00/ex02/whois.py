@@ -5,17 +5,20 @@ import sys
 
 ArrayList = sys.argv[1:]
 if len(ArrayList) == 0:
-    raise AssertionError("No argument given")
+    print("Usage: python whois.py <number>")
 if len(ArrayList) > 1:
-    raise AssertionError("Too many arguments given")
+    print("AssertionError: more than one argument are provided")
 if len(ArrayList) == 1:
     if isinstance(ArrayList[0], str):
         try:
             if int(ArrayList[0]) % 2 == 0:
-                print("I'm Even.")
+                if int(ArrayList[0]) == 0:
+                    print("I'm Zero.")
+                else:
+                    print("I'm Even.")
             else:
                 print("I'm Odd.")
         except ValueError:
-            raise AssertionError("Argument is not a number") from None
+            print("AssertionError: Argument is not an integer")
     else:
-        raise AssertionError("Argument is not a number")
+        print("AssertionError: Argument is not an integer")

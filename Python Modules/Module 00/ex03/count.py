@@ -12,13 +12,13 @@ if __name__ == "__main__":
 
 def text_analyzer(_string = "") -> None:
     """
-        This function counts the number of upper characters, 
-        lower characters, punctuation and spaces in a given text.
+        This function counts the number of upper characters, lower characters,
+        punctuation and spaces in a given text.
     """
     if not isinstance(_string, str):
-        raise AssertionError("argument is not a string")
+        print("AssertionError: argument is not a string")
     while len(_string) == 0:
-        _string = input("What is the text to analyze?")
+        _string = input("What is the text to analyze? \n")
     counter = [0] * 4
     for character in _string:
         if character.isspace():
@@ -42,7 +42,7 @@ def main() -> None:
     if len(sys.argv[1:]) == 1:
         text_analyzer(sys.argv[1])
     else:
-        raise AssertionError("input error, multiple arguements provided")
+        print("AssertionError: input error, multiple arguements provided")
 
 if __name__ == "__main__":
     main()
