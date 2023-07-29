@@ -1,6 +1,7 @@
 import sys
 from ft_filter import ft_filter
 
+
 def word_len(word="", count=0) -> bool:
     """
     Return an True if word length is more than count else False
@@ -8,6 +9,7 @@ def word_len(word="", count=0) -> bool:
     if len(word) > count:
         return True
     return False
+
 
 def main() -> None:
     """
