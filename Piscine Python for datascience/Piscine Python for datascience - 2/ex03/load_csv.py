@@ -1,7 +1,23 @@
 import pandas as pd
 from pandas import DataFrame
 
+
 def load(path: str) -> DataFrame:
+    """
+    Load data from a CSV file into a pandas DataFrame.
+
+    Args:
+        path (str): The file path of the CSV file.
+
+    Returns:
+        DataFrame: The pandas DataFrame containing the
+        data from the CSV file.
+
+    Raises:
+        FileNotFoundError: If the CSV file is not found at the specified path.
+        pd.errors.ParserError: If there is an issue parsing the CSV file.
+        Exception: For any other unexpected errors during loading.
+    """
     try:
         df = pd.read_csv(path)
         num_rows, num_cols = df.shape
