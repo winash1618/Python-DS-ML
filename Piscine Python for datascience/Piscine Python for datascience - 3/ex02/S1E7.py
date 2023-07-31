@@ -1,6 +1,14 @@
 from S1E9 import Character
+
+
 class Baratheon(Character):
-    """Class representing the Baratheon family."""
+    """Class representing the Baratheon family.
+
+    Attributes:
+        family_name (str): The family name, always "Baratheon".
+        eyes (str): The eye color of the character, always "brown".
+        hairs (str): The hair color of the character, always "dark".
+    """
 
     def __init__(self, first_name, is_alive=True):
         super().__init__(first_name, is_alive)
@@ -13,13 +21,23 @@ class Baratheon(Character):
         self.is_alive = False
 
     def __str__(self):
-        return f"Name: {self.first_name}, Family: {self.family_name}, Eyes: {self.eyes}, Hairs: {self.hairs}"
+        s = f"Name: {self.first_name},"
+        + f" Family: {self.family_name},"
+        + f" Eyes: {self.eyes}, Hairs: {self.hairs}"
+        return s
 
     def __repr__(self):
-        return f" Vector: ('{self.family_name}', '{self.eyes}', '{self.hairs}')"
+        return f"Vector: ('{self.family_name}', '{self.eyes}', '{self.hairs}')"
+
 
 class Lannister(Character):
-    """Class representing the Lannister family."""
+    """Class representing the Lannister family.
+
+    Attributes:
+        family_name (str): The family name, always "Lannister".
+        eyes (str): The eye color of the character, always "blue".
+        hairs (str): The hair color of the character, always "light".
+    """
 
     def __init__(self, first_name, is_alive=True):
         super().__init__(first_name, is_alive)
@@ -32,10 +50,13 @@ class Lannister(Character):
         self.is_alive = False
 
     def __str__(self):
-        return f"Name: {self.first_name}, Family: {self.family_name}, Eyes: {self.eyes}, Hairs: {self.hairs}"
+        s = f"Name: {self.first_name},"
+        + f" Family: {self.family_name},"
+        + f" Eyes: {self.eyes}, Hairs: {self.hairs}"
+        return s
 
     def __repr__(self):
-        return f" Vector: ('{self.family_name}', '{self.eyes}', '{self.hairs}')"
+        return f"Vector: ('{self.family_name}', '{self.eyes}', '{self.hairs}')"
 
     @classmethod
     def create_lannister(cls, first_name, is_alive=True):
