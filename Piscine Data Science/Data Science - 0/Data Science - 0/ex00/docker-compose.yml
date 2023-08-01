@@ -1,0 +1,29 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:13.4-buster
+    container_name: postgres
+    environment:
+      PGPORT: 5432
+      POSTGRES_USER: mkaruvan
+      POSTGRES_PASSWORD: mysecretpassword
+      DB_DATABASE: piscineds
+    ports:
+      - "5432:5432"
+    networks:
+      - transcendence
+    volumes:
+      - ../requirements/database/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+      - /Users/mkaruvan/goinfre:/tmp/
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    networks:
+      - transcendence
+networks:
+  transcendence:
