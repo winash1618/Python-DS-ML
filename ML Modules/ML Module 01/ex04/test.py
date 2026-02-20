@@ -5,9 +5,10 @@ function h. Manipulate the loss function J, plot it, and briefly analyze the plo
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
 from sklearn.metrics import mean_squared_error
 from linear_model import MyLinearRegression as MyLR
-data = pd.read_csv("./are_blue_pills_magic.csv")
+data = pd.read_csv(Path(__file__).resolve().parent / "are_blue_pills_magic.csv")
 Xpill = np.array(data['Micrograms']).reshape(-1,1)
 Yscore = np.array(data['Score']).reshape(-1,1)
 linear_model1 = MyLR(np.array([[89.0], [-8]]))
