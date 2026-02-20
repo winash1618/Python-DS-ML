@@ -16,6 +16,6 @@ def zscore(x):
     """
     if not isinstance(x, np.ndarray):
         return None
-    if x.size() == 0:
+    if x.size == 0:
         return None
     return (x - np.mean(x)) / np.sqrt((1/(len(x)) * ((x - np.mean(x)).transpose() @ (x - np.mean(x)))))
