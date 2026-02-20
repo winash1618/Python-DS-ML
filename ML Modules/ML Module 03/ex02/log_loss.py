@@ -30,6 +30,8 @@ def log_loss_(y, y_hat, eps=1e-15):
     i = 0
     total = 0
     while i < m:
-        total += y[i] * math.log(y_hat[i] + eps) + (1 - y[i]) * math.log(1 - (y_hat[i] + eps))
+        y_i = y[i, 0]
+        y_hat_i = y_hat[i, 0]
+        total += y_i * math.log(y_hat_i + eps) + (1 - y_i) * math.log(1 - (y_hat_i + eps))
         i += 1
     return (-1/m) * total
