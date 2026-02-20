@@ -39,7 +39,7 @@ def reg_log_loss_(y, y_hat, theta, lambda_):
         return None
     if not isinstance(lambda_, float):
         return None
-    if y.size is 0 or y_hat.size is 0 or theta.size is 0:
+    if y.size == 0 or y_hat.size == 0 or theta.size == 0:
         return None
     if y.shape != y_hat.shape:
         return None
