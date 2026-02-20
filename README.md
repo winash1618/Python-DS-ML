@@ -72,3 +72,19 @@ Discover your first classification algorithm: logistic regression!
 ## Module04 - Regularization
 Fight overfitting!
 > *Regularization, overfitting. Regularized cost function, regularized gradient descent. Regularized linear regression. Regularized logistic regression.*
+
+## ML Modules setup (.venv)
+
+From the repository root:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r "ML Modules/requirements.txt"
+```
+
+Run ML module tests with the virtual environment interpreter:
+
+```bash
+.venv/bin/python "ML Modules/ML Module 00/ex00/test.py"
+```
