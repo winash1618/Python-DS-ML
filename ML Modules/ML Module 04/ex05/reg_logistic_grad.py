@@ -17,7 +17,7 @@ def reg_logistic_grad(y, x, theta, lambda_):
     if not isinstance(y, np.ndarray) or not isinstance(x, np.ndarray) \
         or not isinstance(theta, np.ndarray) or not isinstance(lambda_, float):
         return None
-    if y.size is 0 or x.size is 0 or theta.size is 0:
+    if y.size == 0 or x.size == 0 or theta.size == 0:
         return None
     m, n = x.shape
     l, p = y.shape
@@ -33,7 +33,7 @@ def reg_logistic_grad(y, x, theta, lambda_):
     while j <= n:
         i = 0
         tot = 0
-        if j is 0:
+        if j == 0:
             while i < m:
                 tot += (1 / (1 + np.exp(-np.dot(X[i,:].reshape(-1, 1).transpose(), theta)))) - y[i]
                 i += 1
@@ -62,7 +62,7 @@ def vec_reg_logistic_grad(y, x, theta, lambda_):
     if not isinstance(y, np.ndarray) or not isinstance(x, np.ndarray) \
         or not isinstance(theta, np.ndarray) or not isinstance(lambda_, float):
         return None
-    if y.size is 0 or x.size is 0 or theta.size is 0:
+    if y.size == 0 or x.size == 0 or theta.size == 0:
         return None
     m, n = x.shape
     l, p = y.shape
