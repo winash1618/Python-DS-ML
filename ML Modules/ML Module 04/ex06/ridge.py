@@ -40,7 +40,7 @@ class MyRidge(MyLR):
     def gradient_(self, y, x):
         if not isinstance(y, np.ndarray) or not isinstance(x, np.ndarray):
             return None
-        if y.size is 0 or x.size is 0:
+        if y.size == 0 or x.size == 0:
             return None
         m, _ = x.shape
         X = np.insert(x, 0, np.array([1]), axis=1)
@@ -50,7 +50,7 @@ class MyRidge(MyLR):
     def fit_(self, x, y):
         if not isinstance(x, np.ndarray) or not isinstance(y, np.ndarray):
             return None
-        if x.size is 0 or y.size is 0:
+        if x.size == 0 or y.size == 0:
             return None
         i = 0
         m, _ = y.shape
