@@ -1,8 +1,9 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
 from multivariate_linear_model import MyLinearRegression as MyLR
-data = pd.read_csv("spacecraft_data.csv")
+data = pd.read_csv(Path(__file__).resolve().parent / "spacecraft_data.csv")
 X = np.array(data[['Age','Thrust_power','Terameters']])
 Y = np.array(data[['Sell_price']])
 my_lreg = MyLR(thetas = np.array([[1.0], [1.0], [1.0], [1.0]]) , alpha = 0.0000732, max_iter = 600000)
